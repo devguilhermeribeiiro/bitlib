@@ -1,7 +1,8 @@
 <?php
 require '../vendor/autoload.php';
+require '../config/Bootstrap.php';
 
-use Bitlib\App;
+use App\App;
 
 $app = new App();
 $app->run();
