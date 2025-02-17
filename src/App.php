@@ -1,10 +1,17 @@
 <?php
-namespace Bitlib;
+namespace App;
+
+use App\Routes\Router;
 
 class App {
     public function run() {
-        echo "Aplicação rodando com PHP, Nginx e PostgreSQL!";
-        echo "</br>";
-        echo $_SERVER['REQUEST_METHOD'];
+        $router = new Router();
+
+        $router::add('GET', '/', 'HomeController#index');
+
+        $request_uri = $_SERVER['REQUEST_URI'];
+        $request_method = $_SERVER['REQUEST_METHOD'];
+
+        $router::resolve($request_uri, $request_method);
     }
 }
